@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".app.ui.appinfo.AppInfoFragment">
+
+    <com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="报告结果"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp_20" />
+        <!-- 设置app:layout_isSticky="true"就可以使View吸顶 -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:padding="10dp"
+            android:text="危险权限"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp_18"
+            app:layout_isSticky="true" />
+
+
+        <me.jingbin.library.ByRecyclerView
+            android:id="@+id/permRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:padding="@dimen/dp_10"
+            android:text="日志汇报"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp_18"
+            app:layout_isSticky="true" />
+
+        <me.jingbin.library.ByRecyclerView
+            android:id="@+id/logRv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+    </com.donkingliang.consecutivescroller.ConsecutiveScrollerLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:src="@drawable/by_refresh_arrow"
+        app:pressedTranslationZ="10dp"
+        app:rippleColor="@color/color_999999" />
+</FrameLayout>

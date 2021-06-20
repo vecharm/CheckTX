@@ -1,0 +1,43 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://repo.eclipse.org/content/repositories/paho-releases/" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://dl.bintray.com/qinci/maven' }
+        //hms
+        maven { url 'http://developer.huawei.com/repo/' }
+        
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.3'
+
+        classpath 'org.greenrobot:greendao-gradle-plugin:3.3.0' // 添加插件 更好支持GreenDao
+        
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+        maven { url "https://repo.eclipse.org/content/repositories/paho-releases/" }
+        maven { url 'https://maven.aliyun.com/repository/public/' }
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://dl.bintray.com/qinci/maven' }
+        //hms
+        maven { url 'http://developer.huawei.com/repo/' }
+        
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
