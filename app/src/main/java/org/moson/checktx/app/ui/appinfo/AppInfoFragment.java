@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -151,9 +152,7 @@ public class AppInfoFragment extends Fragment {
                 .setTitle("请输入您的邮箱地址")
                 .setView(et)
                 .setPositiveButton("确定", (dialogInterface, i) -> {
-                    Intent data = new Intent(Intent.ACTION_SENDTO);
-                    data.setData(Uri.parse("mailto:" + et.getText().toString()));
-                    data.putExtra(Intent.EXTRA_SUBJECT, "moson测试报告 " + packageName);
+
                     List<StackBean> logAdapterDatas = logAdapter.getData();
                     StringBuilder strContent = new StringBuilder();
                     for (StackBean stackBean : logAdapterDatas) {
@@ -164,10 +163,16 @@ public class AppInfoFragment extends Fragment {
                                 .append("\n")
                                 .append(stackBean.front ? "前台" : "后台")
                                 .append("\n")
-                                .append(stackBean.stackInfo);
+                                .append(stackBean.stackInfo)
+                                .append("\n");
                     }
-                    data.putExtra(Intent.EXTRA_TEXT, strContent.toString());
-                    startActivity(data);
+                    String content = strContent.toString();
+                    Log.i(TAG, "createEditDialog[content]: " + content);
+                    Intent intent = new Intent(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("mailto:" + et.getText().toString()));
+                    intent.putExtra(Intent.EXTRA_SUBJECT, "moson测试报告 " + packageName);
+                    intent.putExtra(Intent.EXTRA_TEXT, content);
+                    startActivity(intent);
                 }).setNegativeButton("取消", null).show();
     }
 }
