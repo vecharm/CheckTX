@@ -36,6 +36,15 @@
             android:name="xposedminversion"
             android:value="44" />
 
+        <!-- 全面屏适配 -->
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.1" />
+
+        <!-- 华为适配 -->
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true" />
     </application>
 
 </manifest>
