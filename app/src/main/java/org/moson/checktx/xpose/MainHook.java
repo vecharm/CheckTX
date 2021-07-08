@@ -256,6 +256,15 @@ public class MainHook implements IXposedHookLoadPackage {
 
 
     private void hookApi() {
+        XposedBridge.hookAllMethods(Fragment.class, "onCreate", new XC_MethodHook() {
+            @Override
+            protected void afterHookedMethod(MethodHookParam param) throws Throwable {
+                super.afterHookedMethod(param);
+                if (mApplication != null) {
+                    XposedBridge.log(mApplication.getPackageName() + ".oncreate : " + param.thisObject.getClass().getName());
+                }
+            }
+        });
         //TelephonyManager
         XposedBridge.hookAllMethods(TelephonyManager.class, "getDeviceId", new XC_MethodHook() {
             @Override
