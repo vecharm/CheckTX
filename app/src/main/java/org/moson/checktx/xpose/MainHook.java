@@ -100,6 +100,7 @@ public class MainHook implements IXposedHookLoadPackage {
                 if (activity instanceof FragmentActivity) {
                     registerFragmentLifecycleCallbacks((FragmentActivity) activity);
                 }
+                XposedBridge.log(mApplication.getPackageName() + ".oncreate : " + activity.getClass().getName());
             }
 
             @Override
@@ -162,6 +163,7 @@ public class MainHook implements IXposedHookLoadPackage {
             @Override
             public void onFragmentCreated(@NonNull FragmentManager fm, @NonNull Fragment f, @Nullable Bundle savedInstanceState) {
                 super.onFragmentCreated(fm, f, savedInstanceState);
+                XposedBridge.log(mApplication.getPackageName() + ".oncreate : " + f.getClass().getName());
             }
 
             @Override
